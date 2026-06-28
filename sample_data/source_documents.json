@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "project_id": 1,
+    "title": "Synthetic Gene Expression Signal Notes",
+    "source_type": "research_fixture",
+    "source_reference": "sample-fixture:gene-expression",
+    "content_text": "Curated synthetic notes describe gene expression signals observed at the research cohort level with uncertainty limits."
+  },
+  {
+    "id": 2,
+    "project_id": 1,
+    "title": "Synthetic Neuroinflammation Evidence Notes",
+    "source_type": "research_fixture",
+    "source_reference": "sample-fixture:neuroinflammation",
+    "content_text": "Curated synthetic notes describe inflammatory pathway markers in aggregate schizophrenia research summaries."
+  }
+]

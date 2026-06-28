@@ -1,0 +1,13 @@
+{
+  "model": "MAMMAL synthetic output",
+  "summary": "Synthetic schizophrenia research output with gene expression, inflammation, and synaptic pathway notes.",
+  "findings": [
+    "Gene expression markers may be associated with synaptic pathway activity.",
+    "Increased neuroinflammation markers require cautious interpretation."
+  ],
+  "claims": [
+    "Dopamine and glutamate pathway markers are candidate research markers.",
+    "Polygenic risk should not be interpreted as individual diagnosis."
+  ],
+  "limitations": "This synthetic fixture contains no patient identifiers and is not clinical guidance."
+}

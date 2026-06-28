@@ -1,0 +1,28 @@
+{
+  "name": "med-evidence-auditor",
+  "version": "0.1.0",
+  "private": false,
+  "author": "Jose Perez",
+  "license": "Apache-2.0",
+  "description": "Open source MAMMAL evidence auditing system created by Jose Perez",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "vite": "5.4.21",
+    "typescript": "5.8.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.12",
+    "@types/react-dom": "19.0.4",
+    "tailwindcss": "3.4.17",
+    "postcss": "8.4.49",
+    "autoprefixer": "10.4.20"
+  }
+}

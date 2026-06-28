@@ -1,0 +1,13 @@
+[project]
+name = "med-evidence-auditor"
+version = "0.1.0"
+description = "Open source MAMMAL evidence auditing system"
+authors = [{ name = "Jose Perez" }]
+license = { text = "Apache-2.0" }
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+pythonpath = ["."]

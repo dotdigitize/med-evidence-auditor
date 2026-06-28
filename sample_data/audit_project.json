@@ -1,0 +1,6 @@
+{
+  "id": 1,
+  "name": "Schizophrenia Research Evidence Audit",
+  "description": "Synthetic research fixture for auditing biomedical model statements against curated evidence notes.",
+  "domain_area": "schizophrenia research operations"
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "project_id": 1,
+    "evidence_label": "Gene expression signal note",
+    "evidence_text": "Aggregate schizophrenia research notes suggest altered gene expression signals may be associated with synaptic pathway markers. The notes do not establish diagnosis or treatment response.",
+    "evidence_type": "synthetic research fixture",
+    "source_reference": "sample-fixture:gene-expression",
+    "confidence_score": 0.72
+  },
+  {
+    "id": 2,
+    "project_id": 1,
+    "evidence_label": "Neuroinflammation evidence note",
+    "evidence_text": "Synthetic neuroinflammation evidence notes describe increased inflammation pathway markers in research summaries, with uncertainty about causality and clinical interpretation.",
+    "evidence_type": "synthetic research fixture",
+    "source_reference": "sample-fixture:neuroinflammation",
+    "confidence_score": 0.68
+  },
+  {
+    "id": 3,
+    "project_id": 1,
+    "evidence_label": "Dopamine and glutamate pathway note",
+    "evidence_text": "Dopamine and glutamate pathway research notes describe candidate marker associations at population research level. They do not predict individual risk.",
+    "evidence_type": "synthetic research fixture",
+    "source_reference": "sample-fixture:neurotransmitter-pathways",
+    "confidence_score": 0.7
+  },
+  {
+    "id": 4,
+    "project_id": 1,
+    "evidence_label": "Polygenic research discussion",
+    "evidence_text": "Polygenic risk discussion is limited to research-level association and should not be used for individual diagnosis, treatment, or patient risk prediction.",
+    "evidence_type": "synthetic research fixture",
+    "source_reference": "sample-fixture:polygenic-risk",
+    "confidence_score": 0.66
+  }
+]
