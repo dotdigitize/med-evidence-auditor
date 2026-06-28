@@ -12,7 +12,6 @@ MedEvidence Auditor turns MAMMAL output into a traceable audit trail: model clai
 Core workflow:
 
 ```text
-
 MAMMAL output -> MAMMAL output parser -> MAMMAL claim extraction -> evidence matching -> support scoring -> risk flagging -> human review status -> Markdown/JSON audit report
 ```
 
@@ -46,6 +45,134 @@ Required backend modules:
 The MAMMAL output import and audit pipeline accepts MAMMAL JSON or text biomedical model output and converts it into an audit-ready record. The parser extracts candidate markers, pathway notes, model findings, summary statements, scores, confidence notes, and biomedical claims. Those claims are then matched against evidence items and scored for support.
 
 Running a live MAMMAL command is not required. Importing and parsing saved MAMMAL output is the default workflow. Generic biomedical AI text can be reviewed as a secondary input path, but MedEvidence Auditor is designed around MAMMAL output auditing.
+
+## About MAMMAL and Download
+
+MAMMAL stands for **Molecular Aligned Multi-Modal Architecture and Language**. It is a biomedical foundation model architecture from IBM Research/BiomedSciAI for multi-modal biomedical modeling across proteins, small molecules, and single-cell gene expression data.
+
+MedEvidence Auditor is designed to sit **after a MAMMAL run**. MAMMAL produces biomedical model output. MedEvidence Auditor imports that saved output, parses the MAMMAL findings, extracts claims, matches those claims to evidence, flags risky or unsupported language, and exports an audit report.
+
+Official MAMMAL resources:
+
+```text
+MAMMAL GitHub repository:
+https://github.com/BiomedSciAI/biomed-multi-alignment
+
+MAMMAL pretrained model weights:
+https://huggingface.co/ibm/biomed.omics.bl.sm.ma-ted-458m
+
+MAMMAL paper:
+https://arxiv.org/abs/2410.22367
+
+MAMMAL Hugging Face model card:
+https://huggingface.co/ibm-research/biomed.omics.bl.sm.ma-ted-458m
+```
+
+### Install MAMMAL
+
+The official MAMMAL project supports installation from the GitHub repository or from the published package.
+
+Install directly from GitHub:
+
+```bash
+pip install git+https://github.com/BiomedSciAI/biomed-multi-alignment.git
+```
+
+Or install the examples package:
+
+```bash
+pip install biomed-multi-alignment[examples]
+```
+
+Or clone the repository and install it locally:
+
+```bash
+git clone https://github.com/BiomedSciAI/biomed-multi-alignment.git
+pip install -e ./biomed-multi-alignment[examples]
+```
+
+### Basic MAMMAL Loading Example
+
+```python
+from mammal.model import Mammal
+
+model = Mammal.from_pretrained("ibm/biomed.omics.bl.sm.ma-ted-458m")
+model.eval()
+```
+
+### How MedEvidence Auditor Uses MAMMAL Output
+
+MedEvidence Auditor does not replace MAMMAL. MAMMAL remains the biomedical model source. This project adds an evidence-auditing layer around the MAMMAL result.
+
+Expected workflow:
+
+```text
+Install/run MAMMAL
+-> save MAMMAL output as JSON or text
+-> import saved output into MedEvidence Auditor
+-> parse MAMMAL findings
+-> extract audit claims
+-> match claims to evidence
+-> flag risky language
+-> export Markdown/JSON audit report
+```
+
+### Recommended MAMMAL Output Shape
+
+MedEvidence Auditor can parse saved MAMMAL output from JSON or text. A structured JSON output is preferred because it gives the auditor clearer fields to trace.
+
+```json
+{
+  "run_id": "mammal_scz_001",
+  "model": "ibm/biomed.omics.bl.sm.ma-ted-458m",
+  "task": "schizophrenia_research_signal_review",
+  "summary": "Synaptic signaling, glutamate activity, and immune activation appear as candidate pathway clusters in the schizophrenia research run.",
+  "candidate_markers": [
+    {
+      "name": "IL6",
+      "type": "gene",
+      "score": 0.82,
+      "direction": "increased",
+      "notes": "Inflammatory marker detected in the synthetic research signal set."
+    },
+    {
+      "name": "TNF",
+      "type": "gene",
+      "score": 0.77,
+      "direction": "increased",
+      "notes": "Immune signaling marker detected in the synthetic research signal set."
+    }
+  ],
+  "pathways": [
+    {
+      "name": "neuroinflammation",
+      "score": 0.81
+    },
+    {
+      "name": "glutamate activity",
+      "score": 0.74
+    }
+  ],
+  "findings": [
+    "IL6 and TNF-related inflammatory markers show increased relevance in the schizophrenia research signal set.",
+    "Synaptic signaling appears as a candidate pathway cluster.",
+    "Glutamate activity appears as a candidate pathway cluster."
+  ],
+  "confidence_notes": "Research-level output. Requires evidence review and human interpretation."
+}
+```
+
+The auditor converts this into a structured review:
+
+```text
+MAMMAL summary -> summary claim
+candidate_markers -> marker claims
+pathways -> pathway claims
+findings -> finding claims
+confidence_notes -> uncertainty notes
+```
+
+Then each claim is scored against evidence and exported into the final report.
 
 ## Claim Extraction
 MAMMAL claim extraction converts parsed MAMMAL output into audit claims. It includes marker claims, pathway claims, summary claims, and finding claims while preserving source fields from the original parsed output.
