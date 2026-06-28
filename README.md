@@ -1,5 +1,7 @@
 # MedEvidence Auditor
 
+<img width="1916" height="821" alt="jose perez agi engineer MedEvidence Auditor" src="https://github.com/user-attachments/assets/54956066-9604-4916-b0e3-ce8412d344be" />
+
 MedEvidence Auditor is an open source MAMMAL evidence auditing system for reviewing MAMMAL biomedical model outputs, extracting claims, matching claims to supporting evidence, flagging weak or unsupported statements, detecting risky medical language, and exporting structured verification reports.
 
 Created by Jose Perez.
@@ -10,6 +12,7 @@ MedEvidence Auditor turns MAMMAL output into a traceable audit trail: model clai
 Core workflow:
 
 ```text
+
 MAMMAL output -> MAMMAL output parser -> MAMMAL claim extraction -> evidence matching -> support scoring -> risk flagging -> human review status -> Markdown/JSON audit report
 ```
 
